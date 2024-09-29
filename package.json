@@ -8,22 +8,23 @@
     "start": "node dist/index.js",
     "start:prod": "tsc && node dist/index.js",
     "start:dev": "tsx watch src/index.ts",
-    "database": "NODE_OPTIONS='--loader ts-node/esm' ts-node src/database.ts"
+    "database": "NODE_OPTIONS='--loader ts-node/esm' ts-node src/database.ts",
+    "release:dry": "semantic-release --no-ci --dry-run --branches master",
+    "release": "semantic-release --no-ci --branches master"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@types/express": "^4.17.21",
-    "@types/node": "^20.14.10",
-    "@types/qrcode-terminal": "^0.12.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.0",
+    "semantic-release": "^24.1.2",
     "ts-node": "^10.9.2",
     "tsx": "^4.16.2",
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
     "@types/bcrypt": "^5.0.2",
     "@types/pg": "^8.11.6",
     "bcrypt": "^5.1.1",
@@ -33,5 +34,12 @@
     "qrcode-terminal": "^0.12.0",
     "whatsapp-web.js": "^1.24.0",
     "winston": "^3.14.2"
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github"
+    ]
   }
 }
