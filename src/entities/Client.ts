@@ -5,5 +5,5 @@ export interface Client {
   phone: string;
   password: string;
   dateOfBirth: Date;
-  weight: number;
+  weight: string;
 }

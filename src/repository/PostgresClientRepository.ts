@@ -10,7 +10,7 @@ export class PostgresClientRepository implements ClientRepository {
     const query = `
       INSERT INTO clients (name, email, phone, password, date_of_birth, weight)
       VALUES ($1, $2, $3, $4, $5, $6)
-      RETURNING *
+      RETURNING id, name, email, phone, password, date_of_birth as "dateOfBirth", weight
     `;
     const values = [name, email, phone, password, dateOfBirth, weight];
     const result = await this.pool.query(query, values);
